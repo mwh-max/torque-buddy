@@ -1,0 +1,64 @@
+{
+  "Toyota": {
+    "Camry": {
+      "2020": {
+        "wheelLug": "80 ft-lbs",
+        "oilDrainPlug": "30 ft-lbs",
+        "sparkPlugs": "18 ft-lbs",
+        "caliperBolts": "25 ft-lbs",
+        "transPanBolts": "12 ft-lbs"
+      }
+    },
+    "Corolla": {
+      "2022": {
+        "wheelLug": "76 ft-lbs",
+        "oilDrainPlug": "28 ft-lbs"
+      }
+    },
+    "Tacoma": {
+      "2021": {
+        "wheelLug": "85 ft-lbs",
+        "oilDrainPlug": "30 ft-lbs",
+        "caliperBolts": "24 ft-lbs"
+      }
+    }
+  },
+  "Honda": {
+    "Civic": {
+      "2022": {
+        "wheelLug": "80 ft-lbs",
+        "oilDrainPlug": "29 ft-lbs",
+        "sparkPlugs": "15 ft-lbs"
+      }
+    }
+  },
+  "Ford": {
+    "F150": {
+      "2021": {
+        "wheelLug": "150 ft-lbs",
+        "oilDrainPlug": "30 ft-lbs"
+      }
+    },
+    "Focus": {
+      "2018": {
+        "wheelLug": "100 ft-lbs",
+        "oilDrainPlug": "26 ft-lbs"
+      }
+    }
+  },
+  "Subaru": {
+    "Outback": {
+      "2020": {
+        "wheelLug": "89 ft-lbs",
+        "oilDrainPlug": "31 ft-lbs",
+        "sparkPlugs": "20 ft-lbs"
+      }
+    },
+    "Forester": {
+      "2021": {
+        "wheelLug": "89 ft-lbs",
+        "oilDrainPlug": "30 ft-lbs"
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Torque Buddy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen bg-[#121212] text-neutral-100 font-sans"
+    style="font-family: 'IBM Plex Sans', sans-serif"
+  >
+    <div class="max-w-screen-md mx-auto px-4 pt-10">
+      <h1
+        class="text-5xl text-red-700 font-bebas uppercase tracking-wider mb-2"
+        style="font-family: 'Bebas Neue', sans-serif"
+      >
+        Torque Buddy
+      </h1>
+
+      <p class="text-base text-neutral-300 max-w-xl mb-6">
+        Quickly find and reference torque specs for wheels, oil plugs and more.
+        Choose a vehicle below or edit the data live using the JSON editor.
+        Print, download or update as needed.
+      </p>
+
+      <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <div
+          class="w-full md:w-1/2 bg-[#2a2a2a] border border-neutral-700 rounded-lg p-4 shadow-sm"
+        >
+          <div class="mb-4">
+            <label for="make" class="block font-semibold mb-1">Make:</label>
+            <select
+              id="make"
+              class="w-full bg-[#1f1f1f] text-neutral-100 border border-neutral-600 rounded px-3 py-2 font-medium text-base leading-snug focus:outline-none focus:ring-2 focus:ring-red-700 transition duration-200"
+            >
+              <option value="">-- Select Make --</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Honda">Honda</option>
+              <option value="Ford">Ford</option>
+              <option value="Subaru">Subaru</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="model" class="block font-semibold mb-1">Model:</label>
+            <select
+              id="model"
+              class="w-full bg-[#1f1f1f] text-neutral-100 border border-neutral-600 rounded px-3 py-2 font-medium text-base leading-snug focus:outline-none focus:ring-2 focus:ring-red-700 transition duration-200"
+            >
+              <option value="">-- Select Model --</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="year" class="block font-semibold mb-1">Year:</label>
+            <select
+              id="year"
+              class="w-full bg-[#1f1f1f] text-neutral-100 border border-neutral-600 rounded px-3 py-2 font-medium text-base leading-snug focus:outline-none focus:ring-2 focus:ring-red-700 transition duration-200"
+            >
+              <option value="">-- Select Year --</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="text-sm text-blue-300 leading-relaxed md:max-w-xs lg:max-w-sm p-2"
+        >
+          Tip: Start by clicking <strong>“Load Current JSON”</strong> to see the
+          saved torque data.<br /><br />
+          You can safely make changes in the box below.<br />
+          When you're ready, click <strong>“Apply Changes”</strong> to
+          preview.<br /><br />
+          To save a copy, click <strong>“Download JSON.”</strong><br />
+          Need to reset? Click <strong>“Clear Editor.”</strong><br /><br />
+        </div>
+      </div>
+
+      <div id="results" class="mb-4"></div>
+
+      <div class="text-center text-sm mb-4 space-x-4">
+        <span
+          id="clearSelection"
+          class="font-semibold text-red-500 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Clear Selection</span
+        >
+        <span class="text-neutral-600">|</span>
+        <span
+          id="printSpecs"
+          class="font-semibold text-blue-500 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Print Specs</span
+        >
+      </div>
+
+      <h2 class="text-xl font-semibold mt-6 mb-2">Edit Torque Data (JSON)</h2>
+
+      <textarea
+        id="jsonEditor"
+        class="w-full h-64 p-2 border rounded font-mono text-sm bg-[#2a2a2a] text-neutral-100 border-neutral-700"
+        spellcheck="false"
+        style="font-family: 'IBM Plex Mono', monospace"
+      ></textarea>
+
+      <div class="mt-4 text-center space-x-4 text-sm">
+        <span
+          id="loadJson"
+          class="font-semibold text-neutral-400 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Load Current JSON</span
+        >
+        <span class="text-neutral-600">|</span>
+        <span
+          id="applyJson"
+          class="font-semibold text-green-500 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Apply Changes</span
+        >
+        <span class="text-neutral-600">|</span>
+        <span
+          id="downloadJson"
+          class="font-semibold text-blue-500 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Download JSON</span
+        >
+        <span class="text-neutral-600">|</span>
+        <span
+          id="uploadJsonBtn"
+          class="font-semibold text-amber-400 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Upload JSON</span
+        >
+        <span class="text-neutral-600">|</span>
+        <span
+          id="clearJsonEditor"
+          class="font-semibold text-red-500 cursor-pointer hover:underline hover:bg-[#222] transition px-1 py-0.5 rounded"
+          >Clear Editor</span
+        >
+      </div>
+
+      <input type="file" id="uploadJsonInput" accept=".json" class="hidden" />
+
+      <p id="jsonFeedback" class="mt-2 text-sm"></p>
+    </div>
+  </body>
+</html>
