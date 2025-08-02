@@ -1,6 +1,6 @@
 let torqueSpecs = {};
 
-fetch("torqueData.json")
+fetch("./torqueData.json")
   .then((res) => res.json())
   .then((data) => {
     torqueSpecs = data;
